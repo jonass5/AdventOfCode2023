@@ -1,12 +1,26 @@
 import org.junit.jupiter.api.Test;
 
 import java.io.IOException;
+import java.util.Arrays;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
 
 public class Day03Test {
+
+    List<String> input = Arrays.asList(
+            "467..114..",
+            "...*......",
+            "..35..633.",
+            "......#...",
+            "617*......",
+            ".....+.58.",
+            "..592.....",
+            "......755.",
+            "...$.*....",
+            ".664.598.."
+    );
 
     @Test
     void isCharacterASymbol_True() throws IOException {
@@ -100,4 +114,17 @@ public class Day03Test {
         assertThat(result).isTrue();
     }
 
+    @Test
+    void shouldFindSymbolInAboveLineNearNumber() throws IOException {
+        // arrange
+        int lineIndex = 4;
+        int startIndex = 0;
+        int endIndex = 2;
+
+        // act
+        boolean result = new Day03().isNearSymbolInAboveLine(input, lineIndex, startIndex, endIndex);
+
+        // assert
+        assertThat(result).isTrue();
+    }
 }

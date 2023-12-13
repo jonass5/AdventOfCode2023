@@ -118,4 +118,8 @@ public class Day03 {
 
         return false;
     }
+
+    public boolean isNearSymbolInAboveLine(List<String> input, int lineIndex, int startIndex, int endIndex) {
+        return false;
+    }
 }
