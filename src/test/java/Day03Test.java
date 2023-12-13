@@ -9,12 +9,9 @@ public class Day03Test {
 
     @Test
     void isCharacterASymbol_True() throws IOException {
-        //Arrange
-        char charToCheck = '+';
-        Day03 day03 = new Day03();
 
         //Act
-        boolean isSymbol = day03.isCharacterASymbol(charToCheck);
+        boolean isSymbol = new Day03().isCharacterASymbol('+');
 
         //Assert
         Assertions.assertThat(isSymbol).isTrue();
@@ -22,12 +19,9 @@ public class Day03Test {
 
     @Test
     void isCharacterASymbol_False() throws IOException {
-        //Arrange
-        char charToCheck = '.';
-        Day03 day03 = new Day03();
 
         //Act
-        boolean isSymbol = day03.isCharacterASymbol(charToCheck);
+        boolean isSymbol = new Day03().isCharacterASymbol('.');
 
         //Assert
         Assertions.assertThat(isSymbol).isFalse();
@@ -35,12 +29,9 @@ public class Day03Test {
 
     @Test
     void isCharacterASymbol_False2() throws IOException {
-        //Arrange
-        char charToCheck = '3';
-        Day03 day03 = new Day03();
 
         //Act
-        boolean isSymbol = day03.isCharacterASymbol(charToCheck);
+        boolean isSymbol = new Day03().isCharacterASymbol('3');
 
         //Assert
         Assertions.assertThat(isSymbol).isFalse();
