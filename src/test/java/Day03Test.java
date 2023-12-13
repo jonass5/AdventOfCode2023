@@ -47,7 +47,14 @@ public class Day03Test {
     }
 
     @Test
-    void isLeft() {
+    void isSymbolLeftToIndex() {
+        //Arrange
+        int startIndex =
+
+        //Act
+
+        //Assert
+
     }
 
     @Test
