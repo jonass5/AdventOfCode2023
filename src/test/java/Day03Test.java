@@ -4,6 +4,8 @@ import org.junit.jupiter.api.Test;
 import java.io.IOException;
 import java.util.List;
 
+import static org.assertj.core.api.Assertions.*;
+
 
 public class Day03Test {
 
@@ -14,7 +16,7 @@ public class Day03Test {
         boolean isSymbol = new Day03().isCharacterASymbol('+');
 
         //Assert
-        Assertions.assertThat(isSymbol).isTrue();
+        assertThat(isSymbol).isTrue();
     }
 
     @Test
@@ -24,7 +26,7 @@ public class Day03Test {
         boolean isSymbol = new Day03().isCharacterASymbol('.');
 
         //Assert
-        Assertions.assertThat(isSymbol).isFalse();
+        assertThat(isSymbol).isFalse();
     }
 
     @Test
@@ -34,7 +36,7 @@ public class Day03Test {
         boolean isSymbol = new Day03().isCharacterASymbol('3');
 
         //Assert
-        Assertions.assertThat(isSymbol).isFalse();
+        assertThat(isSymbol).isFalse();
     }
 
     @Test
@@ -58,6 +60,6 @@ public class Day03Test {
         List<String> resultList = day03.findNumbers(testLine);
 
         //Assert
-        Assertions.assertThat(resultList).hasSize(14);
+        assertThat(resultList).hasSize(14);
     }
 }
