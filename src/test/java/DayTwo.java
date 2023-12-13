@@ -1,6 +1,7 @@
 import org.junit.jupiter.api.Test;
 
 import java.io.IOException;
+import java.nio.file.Paths;
 import java.util.List;
 
 public class DayTwo {
@@ -12,7 +13,7 @@ public class DayTwo {
         int summary = 0;
         int summaryPart2 = 0;
 
-        List<String> input = Utils.readFile("DayTwo.txt");
+        List<String> input = Utils.readFile(Paths.get("src/test/resources/DayTwo.txt"));
 
         for (String line : input) {
 

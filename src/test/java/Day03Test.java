@@ -2,34 +2,19 @@ import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 import java.io.IOException;
-import java.nio.file.Path;
-import java.nio.file.Paths;
 import java.util.List;
 
 
 public class Day03Test {
 
-
-    @Test
-    void shouldLoadInputData() throws IOException {
-        //Arrange
-        Path path = Paths.get("src/test/resources/Day03Test.txt");
-
-        //Act
-        List<String> inputList = AdventUtils.readFile(path);
-
-        //Assert
-        Assertions.assertThat(inputList).hasSize(10);
-
-    }
-
     @Test
     void isCharacterASymbol_True() throws IOException {
         //Arrange
         char charToCheck = '+';
+        Day03 day03 = new Day03();
 
         //Act
-        boolean isSymbol = AdventUtils.isCharacterASymbol(charToCheck);
+        boolean isSymbol = day03.isCharacterASymbol(charToCheck);
 
         //Assert
         Assertions.assertThat(isSymbol).isTrue();
@@ -39,9 +24,10 @@ public class Day03Test {
     void isCharacterASymbol_False() throws IOException {
         //Arrange
         char charToCheck = '.';
+        Day03 day03 = new Day03();
 
         //Act
-        boolean isSymbol = AdventUtils.isCharacterASymbol(charToCheck);
+        boolean isSymbol = day03.isCharacterASymbol(charToCheck);
 
         //Assert
         Assertions.assertThat(isSymbol).isFalse();
@@ -51,12 +37,17 @@ public class Day03Test {
     void isCharacterASymbol_False2() throws IOException {
         //Arrange
         char charToCheck = '3';
+        Day03 day03 = new Day03();
 
         //Act
-        boolean isSymbol = AdventUtils.isCharacterASymbol(charToCheck);
+        boolean isSymbol = day03.isCharacterASymbol(charToCheck);
 
         //Assert
         Assertions.assertThat(isSymbol).isFalse();
+    }
+
+    @Test
+    void isLeft() {
     }
 
     @Test

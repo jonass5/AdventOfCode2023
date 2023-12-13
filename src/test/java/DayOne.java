@@ -1,6 +1,7 @@
 import org.junit.jupiter.api.Test;
 
 import java.io.IOException;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -23,7 +24,7 @@ public class DayOne {
         numberNameMap.put("nine", "9");
 
         List<Integer> sumList = new ArrayList<>();
-        List<String> input = Utils.readFile("DayOne.txt");
+        List<String> input = Utils.readFile(Paths.get("src/test/resources/DayOne.txt"));
 
         for (String line : input) {
             sumList.add(getCorrectSumForLine(line));

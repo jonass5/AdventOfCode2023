@@ -10,7 +10,7 @@ public class Day03 {
     private List<String> input;
 
     public Day03() throws IOException {
-        input = AdventUtils.readFile(Paths.get("src/main/resources/DayThree.txt"));
+        input = Utils.readFile(Paths.get("src/main/resources/DayThree.txt"));
     }
 
     public int DayThree() {
@@ -66,14 +66,14 @@ public class Day03 {
     private boolean checkLeftRight(int firstIndex, int lastIndex, String currentLine) {
         if (firstIndex > 0) {
             char charToCheck = currentLine.charAt(firstIndex - 1);
-            if (AdventUtils.isCharacterASymbol(charToCheck)) {
+            if (isCharacterASymbol(charToCheck)) {
                 return true;
             }
         }
 
         if (lastIndex < input.size()) {
             char charToCheck = currentLine.charAt(lastIndex + 1);
-            return AdventUtils.isCharacterASymbol(charToCheck);
+            return isCharacterASymbol(charToCheck);
         }
         return false;
     }
@@ -122,6 +122,10 @@ public class Day03 {
         }
 
         return numbers;
+    }
+
+    public boolean isCharacterASymbol(char c) {
+        return !Character.isDigit(c) && !Character.toString(c).contains(".");
     }
 
 }
