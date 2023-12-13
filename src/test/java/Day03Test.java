@@ -40,12 +40,8 @@ public class Day03Test {
 
     @Test
     void isSymbolLeftToIndex() throws IOException {
-        //Arrange
-        String line = ".*35..633.";
-        int startIndex = 2;
-
         //Act
-        boolean result = new Day03().checkLeft(startIndex, line);
+        boolean result = new Day03().checkLeft(2, ".*35..633.");
 
         //Assert
         assertThat(result).isTrue();
@@ -53,16 +49,32 @@ public class Day03Test {
 
     @Test
     void isSymbolLeftToIndex_OutOfBounce() throws IOException {
-        //Arrange
-        String line = "35....633.";
-        int startIndex = 0;
-
         //Act
-        boolean result = new Day03().checkLeft(startIndex, line);
+        boolean result = new Day03().checkLeft(0, "35....633.");
 
         //Assert
         assertThat(result).isFalse();
     }
+
+
+    @Test
+    void isSymbolRightToIndex() throws IOException {
+        //Act
+        boolean result = new Day03().checkRight(8, "..35..633*");
+
+        //Assert
+        assertThat(result).isTrue();
+    }
+
+    @Test
+    void isSymbolRightToIndex_OutOfBounce() throws IOException {
+        //Act
+        boolean result = new Day03().checkRight(8, "..35..633");
+
+        //Assert
+        assertThat(result).isFalse();
+    }
+
 
     @Test
     void shouldFindAllNumbersInStringLine() throws IOException {

@@ -135,4 +135,12 @@ public class Day03 {
 
         return false;
     }
+
+    public boolean checkRight(int index, String line) {
+        if (index + 1 < line.length()) {
+            return isCharacterASymbol(line.charAt(index + 1));
+        }
+
+        return false;
+    }
 }
