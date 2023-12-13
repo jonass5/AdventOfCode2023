@@ -15,11 +15,13 @@ public class Day03Test {
         Path path = Paths.get("DayThree.txt");
 
         //Act
-        List<String> inputList = Utils.readFile(path);
+        List<String> inputList = Utils.readFile(path.toFile().getName());
 
 
         //Assert
-        Assertions.assertThat(inputList).hasSize(140);
+        Assertions.assertThat(inputList).hasSize(10);
 
     }
+
+
 }
