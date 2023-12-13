@@ -5,10 +5,9 @@ import java.util.regex.Pattern;
 
 public class Day03 {
 
-
     private List<String> input = Utils.readFile("DayThree.txt");
 
-    void DayThree() {
+    public void DayThree() {
 
         int sum = 0;
 

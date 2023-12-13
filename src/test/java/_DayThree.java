@@ -1,46 +1,76 @@
 import org.junit.jupiter.api.Test;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class DayThreeTry {
+public class _DayThree {
 
 
     private List<String> input = Utils.readFile("DayThree.txt");
 
     @Test
-    void DayThree() {
+    void DayThree() throws IOException {
 
         int sum = 0;
+        int numNum = 0;
+        int foundNum = 0;
+        int addedNum = 0;
 
         for (int inputLineCounter = 0; inputLineCounter < input.size(); inputLineCounter++) {
             String currentLine = input.get(inputLineCounter);
 
-            List<String> numbersInLine = findNumbers(currentLine);
-            System.out.println(numbersInLine);
+            List<String> neededNum = findNumber(currentLine);
+            numNum += neededNum.size();
 
-            for (String number : numbersInLine) {
+            for (int lineCounter = 0; lineCounter < currentLine.length(); lineCounter++) {
+                char currentChar = currentLine.charAt(lineCounter);
 
-                System.out.println(currentLine);
+                if (Character.isDigit(currentChar)) {
+                    String number = "";
+                    int firstIndex = lineCounter;
 
-                int startIndex = currentLine.indexOf(number);
-                int endIndex = startIndex + number.length();
+                    for (int numberIndexCounter = lineCounter; numberIndexCounter < currentLine.length(); numberIndexCounter++) {
+                        currentChar = currentLine.charAt(numberIndexCounter);
 
-                System.out.println(startIndex + ", " + endIndex);
+                        if (Character.isDigit(currentChar)) {
+                            number += currentChar;
 
-                if (isNearSymbol(inputLineCounter, startIndex, endIndex)) {
-                    System.out.println(Integer.parseInt(number));
-                    sum += Integer.parseInt(number);
+                            if (numberIndexCounter < 139) {
+                                continue;
+                            }
+
+                        }
+
+                        neededNum.remove(number);
+                        foundNum++;
+                        if (isNearSymbol(inputLineCounter, firstIndex, numberIndexCounter - 1)) {
+                            addedNum++;
+                            sum += Integer.parseInt(number);
+                        }
+
+                        lineCounter = numberIndexCounter;
+
+                        break;
+                    }
                 }
-
-                currentLine = currentLine.substring(endIndex);
             }
-        }
-        System.out.println("Sum of all added Numbers: " + sum);
-    }
 
+            if (!neededNum.isEmpty()) {
+                System.out.println(currentLine);
+                System.out.println(neededNum);
+            }
+
+        }
+
+        System.out.println("Found Numbers: " + numNum);
+        System.out.println("Checked Numbers: " + foundNum);
+        System.out.println("Added Numbers: " + addedNum);
+        System.out.println("Sum of all added Numbers: " + sum);
+
+    }
 
     private boolean isNearSymbol(int currentLineNumber, int firstIndex, int lastIndex) {
         String currentLine = input.get(currentLineNumber);
@@ -106,7 +136,7 @@ public class DayThreeTry {
         return Math.max(value, 0);
     }
 
-    private List<String> findNumbers(String line) {
+    private List<String> findNumber(String line) {
         Pattern p = Pattern.compile("\\d+");
         Matcher m = p.matcher(line);
 
@@ -116,7 +146,18 @@ public class DayThreeTry {
             numbers.add(m.group());
         }
 
+//        System.out.println(numbers);
+
         return numbers;
+
+//        if (numbers.isEmpty() || numbers.stream()
+//                .filter(i -> Collections.frequency(numbers, i) > 1)
+//                .collect(Collectors.toSet()).size() > 0) {
+//            System.out.println("ERROR!");
+//            System.out.println(line);
+//            System.out.println(numbers);
+//
+//        }
 
     }
 
