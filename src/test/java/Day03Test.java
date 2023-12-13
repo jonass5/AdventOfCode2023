@@ -52,6 +52,19 @@ public class Day03Test {
     }
 
     @Test
+    void isSymbolLeftToIndex_OutOfBounce() throws IOException {
+        //Arrange
+        String line = "35....633.";
+        int startIndex = 0;
+
+        //Act
+        boolean result = new Day03().checkLeft(startIndex, line);
+
+        //Assert
+        assertThat(result).isFalse();
+    }
+
+    @Test
     void shouldFindAllNumbersInStringLine() throws IOException {
         //Arrange
         Day03 day03 = new Day03();

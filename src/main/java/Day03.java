@@ -129,6 +129,10 @@ public class Day03 {
     }
 
     public boolean checkLeft(int startIndex, String line) {
+        if (startIndex > 0) {
+            return isCharacterASymbol(line.charAt(startIndex - 1));
+        }
+
         return false;
     }
 }
