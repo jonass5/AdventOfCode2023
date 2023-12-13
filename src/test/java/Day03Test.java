@@ -1,10 +1,9 @@
-import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 import java.io.IOException;
 import java.util.List;
 
-import static org.assertj.core.api.Assertions.*;
+import static org.assertj.core.api.Assertions.assertThat;
 
 
 public class Day03Test {
@@ -40,14 +39,16 @@ public class Day03Test {
     }
 
     @Test
-    void isSymbolLeftToIndex() {
+    void isSymbolLeftToIndex() throws IOException {
         //Arrange
-        int startIndex =
+        String line = ".*35..633.";
+        int startIndex = 2;
 
         //Act
+        boolean result = new Day03().checkLeft(startIndex, line);
 
         //Assert
-
+        assertThat(result).isTrue();
     }
 
     @Test

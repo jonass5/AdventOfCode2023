@@ -128,4 +128,7 @@ public class Day03 {
         return !Character.isDigit(c) && !Character.toString(c).contains(".");
     }
 
+    public boolean checkLeft(int startIndex, String line) {
+        return false;
+    }
 }
