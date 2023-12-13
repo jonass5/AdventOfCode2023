@@ -88,4 +88,16 @@ public class Day03Test {
         //Assert
         assertThat(resultList).hasSize(14);
     }
+
+    @Test
+    void shouldFindSymbolInSameLineNearNumber() throws IOException {
+        // arrange
+
+        // act
+        boolean result = new Day03().isNearSymbolInSameLine("617*......", 0, 2);
+
+        // assert
+        assertThat(result).isTrue();
+    }
+
 }

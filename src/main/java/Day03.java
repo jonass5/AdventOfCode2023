@@ -38,7 +38,7 @@ public class Day03 {
 
             System.out.println(startIndex + ", " + endIndex);
 
-            if (isNearSymbol(inputLineCounter, startIndex, endIndex)) {
+            if (isNearSymbolInSameLine(currentLine, startIndex, endIndex)) {
                 System.out.println(Integer.parseInt(number));
                 sum += Integer.parseInt(number);
             }
@@ -49,33 +49,8 @@ public class Day03 {
     }
 
 
-    private boolean isNearSymbol(int currentLineNumber, int firstIndex, int lastIndex) {
-        String currentLine = input.get(currentLineNumber);
-
-        if (checkLeftRight(firstIndex, lastIndex, currentLine)) {
-            return true;
-        }
-
-        if (checkOverUnderLine(currentLineNumber, firstIndex, lastIndex)) {
-            return true;
-        }
-
-        return false;
-    }
-
-    private boolean checkLeftRight(int firstIndex, int lastIndex, String currentLine) {
-        if (firstIndex > 0) {
-            char charToCheck = currentLine.charAt(firstIndex - 1);
-            if (isCharacterASymbol(charToCheck)) {
-                return true;
-            }
-        }
-
-        if (lastIndex < input.size()) {
-            char charToCheck = currentLine.charAt(lastIndex + 1);
-            return isCharacterASymbol(charToCheck);
-        }
-        return false;
+    public boolean isNearSymbolInSameLine(String currentLine, int firstIndex, int lastIndex) {
+        return checkLeft(firstIndex, currentLine) || checkRight(lastIndex, currentLine);
     }
 
     private boolean checkOverUnderLine(int currentLineNumber, int firstIndex, int lastIndex) {
