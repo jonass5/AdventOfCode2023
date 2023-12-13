@@ -115,11 +115,25 @@ public class Day03Test {
     }
 
     @Test
-    void shouldFindSymbolInAboveLineNearNumber() throws IOException {
+    void shouldFindSymbolInAboveLineNearNumber_False() throws IOException {
         // arrange
         int lineIndex = 4;
         int startIndex = 0;
         int endIndex = 2;
+
+        // act
+        boolean result = new Day03().isNearSymbolInAboveLine(input, lineIndex, startIndex, endIndex);
+
+        // assert
+        assertThat(result).isFalse();
+    }
+
+    @Test
+    void shouldFindSymbolInAboveLineNearNumber_True() throws IOException {
+        // arrange
+        int lineIndex = 6;
+        int startIndex = 2;
+        int endIndex = 4;
 
         // act
         boolean result = new Day03().isNearSymbolInAboveLine(input, lineIndex, startIndex, endIndex);

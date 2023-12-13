@@ -120,6 +120,15 @@ public class Day03 {
     }
 
     public boolean isNearSymbolInAboveLine(List<String> input, int lineIndex, int startIndex, int endIndex) {
+        String lineOver = input.get(lineIndex - 1).substring(startIndex - 1, endIndex + 2);
+
+        for (char currentChar : lineOver.toCharArray()) {
+            if (isCharacterASymbol(currentChar)) {
+                return true;
+            }
+
+        }
+
         return false;
     }
 }
