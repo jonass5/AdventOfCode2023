@@ -1,3 +1,5 @@
+import java.io.IOException;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.regex.Matcher;
@@ -5,36 +7,45 @@ import java.util.regex.Pattern;
 
 public class Day03 {
 
-    private List<String> input = Utils.readFile("DayThree.txt");
+    private List<String> input;
 
-    public void DayThree() {
+    public Day03() throws IOException {
+        input = AdventUtils.readFile(Paths.get("src/main/resources/DayThree.txt"));
+    }
 
+    public int DayThree() {
         int sum = 0;
 
         for (int inputLineCounter = 0; inputLineCounter < input.size(); inputLineCounter++) {
             String currentLine = input.get(inputLineCounter);
 
             List<String> numbersInLine = findNumbers(currentLine);
-            System.out.println(numbersInLine);
 
-            for (String number : numbersInLine) {
-
-                System.out.println(currentLine);
-
-                int startIndex = currentLine.indexOf(number);
-                int endIndex = startIndex + number.length();
-
-                System.out.println(startIndex + ", " + endIndex);
-
-                if (isNearSymbol(inputLineCounter, startIndex, endIndex)) {
-                    System.out.println(Integer.parseInt(number));
-                    sum += Integer.parseInt(number);
-                }
-
-                currentLine = currentLine.substring(endIndex);
-            }
+            sum += sumAllNumbersThatAreNearSymbol(inputLineCounter, currentLine, numbersInLine);
         }
-        System.out.println("Sum of all added Numbers: " + sum);
+
+        return sum;
+    }
+
+    private int sumAllNumbersThatAreNearSymbol(int inputLineCounter, String currentLine, List<String> numbersInLine) {
+        int sum = 0;
+        for (String number : numbersInLine) {
+
+            System.out.println(currentLine);
+
+            int startIndex = currentLine.indexOf(number);
+            int endIndex = startIndex + number.length();
+
+            System.out.println(startIndex + ", " + endIndex);
+
+            if (isNearSymbol(inputLineCounter, startIndex, endIndex)) {
+                System.out.println(Integer.parseInt(number));
+                sum += Integer.parseInt(number);
+            }
+
+            currentLine = currentLine.substring(endIndex);
+        }
+        return sum;
     }
 
 
@@ -54,18 +65,16 @@ public class Day03 {
 
     private boolean checkLeftRight(int firstIndex, int lastIndex, String currentLine) {
         if (firstIndex > 0) {
-            if (!Character.isDigit(currentLine.charAt(firstIndex - 1)) && !Character.toString(currentLine.charAt(firstIndex - 1)).contains(".")) {
+            char charToCheck = currentLine.charAt(firstIndex - 1);
+            if (AdventUtils.isCharacterASymbol(charToCheck)) {
                 return true;
             }
         }
 
         if (lastIndex < input.size()) {
-            if (!Character.isDigit(currentLine.charAt(lastIndex + 1)) && !Character.toString(currentLine.charAt(lastIndex + 1)).contains(".")) {
-                return true;
-            }
+            char charToCheck = currentLine.charAt(lastIndex + 1);
+            return AdventUtils.isCharacterASymbol(charToCheck);
         }
-
-
         return false;
     }
 
@@ -102,7 +111,7 @@ public class Day03 {
         return Math.max(value, 0);
     }
 
-    private List<String> findNumbers(String line) {
+    public List<String> findNumbers(String line) {
         Pattern p = Pattern.compile("\\d+");
         Matcher m = p.matcher(line);
 
@@ -113,7 +122,6 @@ public class Day03 {
         }
 
         return numbers;
-
     }
 
 }
