@@ -93,21 +93,46 @@ public class Day03Test {
     @Test
     void shouldFindAllNumbersInStringLine() throws IOException {
         //Arrange
-        Day03 day03 = new Day03();
         String testLine = "........$..388.........152*141..*......73.719...$526....830...759......%......943............541.624.781...*...$150.............966.........";
 
         //Act
-        List<String> resultList = day03.findNumbers(testLine);
+        List<String> resultList = new Day03().findNumbers(testLine);
 
         //Assert
         assertThat(resultList).hasSize(14);
     }
 
+    @Test
+    void shouldFindSymbolInAdjacentLineNearNumber_True() throws IOException {
+        //Arrange
+        int lineIndex = 0;
+        int startIndex = 0;
+        int endIndex = 3;
+
+        //Act
+        boolean hasNearSymbol = new Day03().isNearSymbolInAdjacentLine(input, lineIndex, startIndex, endIndex);
+
+        //Assert
+        assertThat(hasNearSymbol).isTrue();
+    }
+
+
+    @Test
+    void shouldFindSymbolInAdjacentLineNearNumber_False() throws IOException {
+        //Arrange
+        int lineIndex = 7;
+        int startIndex = 7;
+        int endIndex = 9;
+
+        //Act
+        boolean hasNearSymbol = new Day03().isNearSymbolInAdjacentLine(input, lineIndex, startIndex, endIndex);
+
+        //Assert
+        assertThat(hasNearSymbol).isFalse();
+    }
 
     @Test
     void shouldFindSymbolInSameLineNearNumber() throws IOException {
-        // arrange
-
         // act
         boolean result = new Day03().isNearSymbolInSameLine("617*......", 0, 2);
 

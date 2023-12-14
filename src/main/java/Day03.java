@@ -53,8 +53,8 @@ public class Day03 {
         return checkLeft(firstIndex, currentLine) || checkRight(lastIndex, currentLine);
     }
 
-    public boolean isNearSymbolInAdjacentLine(int lineIndex, int firstIndex, int lastIndex) {
-        return isNearSymbolInUnderLine(input, lineIndex, firstIndex, lastIndex) || isNearSymbolInAboveLine(input, lineIndex, lastIndex, lastIndex);
+    public boolean isNearSymbolInAdjacentLine(List<String> inputLines, int lineIndex, int firstIndex, int lastIndex) {
+        return isNearSymbolInUnderLine(inputLines, lineIndex, firstIndex, lastIndex) || isNearSymbolInAboveLine(inputLines, lineIndex, lastIndex, lastIndex);
     }
 
 //    private boolean checkOverUnderLine(int currentLineNumber, int firstIndex, int lastIndex) {
