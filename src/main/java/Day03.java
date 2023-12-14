@@ -56,31 +56,6 @@ public class Day03 {
         return isNearSymbolInUnderLine(lineIndex, firstIndex, lastIndex) || isNearSymbolInAboveLine(inputLines, lineIndex, lastIndex, lastIndex);
     }
 
-//    private boolean checkOverUnderLine(int currentLineNumber, int firstIndex, int lastIndex) {
-//
-//        if (currentLineNumber > 0) {
-//            String lineOver = input.get(currentLineNumber - 1).substring(maxOrValue(firstIndex - 1), maxOrValue(lastIndex + 1));
-//
-//            for (char c : lineOver.toCharArray()) {
-//                if (!Character.isDigit(c) && !Character.toString(c).contains(".")) {
-//                    return true;
-//                }
-//            }
-//        }
-//
-//        if (currentLineNumber < input.size() - 1) {
-//            String lineUnder = input.get(currentLineNumber + 1).substring(maxOrValue(firstIndex - 1), maxOrValue(lastIndex + 1));
-//
-//            for (char c : lineUnder.toCharArray()) {
-//                if (!Character.isDigit(c) && !Character.toString(c).contains(".")) {
-//                    return true;
-//                }
-//            }
-//        }
-//
-//        return false;
-//    }
-
     public List<String> findNumbers(String line) {
         Pattern p = Pattern.compile("\\d+");
         Matcher m = p.matcher(line);
