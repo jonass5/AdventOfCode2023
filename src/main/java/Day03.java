@@ -117,4 +117,22 @@ public class Day03 {
 
         return false;
     }
+
+    public List<PartNumber> findAllPartNumbers() {
+        List<PartNumber> partNumbers = new ArrayList<>();
+        for (int inputLineCounter = 0; inputLineCounter < input.size(); inputLineCounter++) {
+            String currentLine = input.get(inputLineCounter);
+            List<String> numbersInLine = findNumbers(currentLine);
+
+            for (int i = 0; i < numbersInLine.size(); i++) {
+                partNumbers.add(new PartNumber());
+            }
+
+        }
+        return partNumbers;
+    }
+}
+
+class PartNumber {
+
 }

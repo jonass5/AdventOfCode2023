@@ -253,17 +253,19 @@ public class Day03Test {
         assertThat(result).isTrue();
     }
 
+
     @Test
-    void shouldFindSymbolInUnderLineNearNumber_True2() {
+    void shouldFindAllPartNumbers() {
         // arrange
         int lineIndex = 2;
         int startIndex = 6;
         int endIndex = 8;
 
         // act
-        day03.dayThree();
+        List<PartNumber> partNumbers = day03.findAllPartNumbers();
 
         // assert
+        assertThat(partNumbers).hasSize(10);
     }
 
 }
