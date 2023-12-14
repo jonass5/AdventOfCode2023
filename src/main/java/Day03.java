@@ -18,7 +18,7 @@ public class Day03 {
             String currentLine = input.get(inputLineCounter);
             List<String> numbersInLine = findNumbers(currentLine);
 
-            sum += sumAllNumbersThatAreNearSymbol(inputLineCounter, numbersInLine);
+            sum += sumAllNumbersThatAreNearSymbolInLine(inputLineCounter, numbersInLine);
         }
 
         System.out.println(sum);
@@ -26,7 +26,7 @@ public class Day03 {
         return sum;
     }
 
-    public int sumAllNumbersThatAreNearSymbol(int lineIndex, List<String> numbersInLine) {
+    public int sumAllNumbersThatAreNearSymbolInLine(int lineIndex, List<String> numbersInLine) {
         int sumOfNumbers = 0;
         int lineOffSet = 0;
         String currentLine = input.get(lineIndex);

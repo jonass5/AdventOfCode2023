@@ -257,15 +257,13 @@ public class Day03Test {
     @Test
     void shouldFindAllPartNumbers() {
         // arrange
-        int lineIndex = 2;
-        int startIndex = 6;
-        int endIndex = 8;
 
         // act
         List<PartNumber> partNumbers = day03.findAllPartNumbers();
 
         // assert
         assertThat(partNumbers).hasSize(10);
+        assertThat(partNumbers).contains(new PartNumber(0), 0);
     }
 
 }
