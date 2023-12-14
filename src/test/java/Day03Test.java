@@ -261,7 +261,7 @@ public class Day03Test {
         int endIndex = 8;
 
         // act
-        day03.DayThree();
+        day03.dayThree();
 
         // assert
     }

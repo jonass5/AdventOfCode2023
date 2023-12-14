@@ -11,7 +11,7 @@ public class Day03 {
         this.input = input;
     }
 
-    public int DayThree() {
+    public int dayThree() {
         int sum = 0;
 
         for (int inputLineCounter = 0; inputLineCounter < input.size(); inputLineCounter++) {
