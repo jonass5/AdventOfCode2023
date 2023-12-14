@@ -54,7 +54,7 @@ public class Day03 {
     }
 
     public boolean isNearSymbolInAdjacentLine(int lineIndex, int firstIndex, int lastIndex) {
-        return isNearSymbolInUnderLine(lineIndex, firstIndex, lastIndex) || isNearSymbolInAboveLine(lineIndex, lastIndex, lastIndex);
+        return isNearSymbolInUnderLine(lineIndex, firstIndex, lastIndex) || isNearSymbolInAboveLine(lineIndex, firstIndex, lastIndex);
     }
 
     public List<String> findNumbers(String line) {

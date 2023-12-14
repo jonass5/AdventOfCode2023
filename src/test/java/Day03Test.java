@@ -276,6 +276,7 @@ public class Day03Test {
         );
     }
 
+
     @Test
     void shouldFilterOutAllPartNumbers() {
         // arrange
@@ -296,6 +297,19 @@ public class Day03Test {
 
         // assert
         assertThat(filteredPartNumbers).hasSize(8);
+    }
+
+    @Test
+    void shouldFilterOutAllPartNumbers_SingleNumber() {
+        // arrange
+        PartNumber partNumber = new PartNumber(9, 5, "598");
+        int endIndex = partNumber.getStartIndex() + partNumber.getNumber().length() - 1;
+
+        // act
+        boolean isNearSymbol = day03.isNearSymbolInAdjacentLine(partNumber.getLineIndex(), partNumber.getStartIndex(), endIndex);
+
+        // assert
+        assertThat(isNearSymbol).isTrue();
     }
 
 
