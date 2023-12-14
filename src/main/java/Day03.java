@@ -36,7 +36,7 @@ public class Day03 {
             int startIndex = currentLine.indexOf(number);
             int endIndex = startIndex + number.length();
 
-            if (isNearSymbolInSameLine(currentLine, startIndex, endIndex) || isNearSymbolInAdjacentLine(input, lineIndex, lineOffSet + startIndex, lineOffSet + endIndex)) {
+            if (isNearSymbolInSameLine(currentLine, startIndex, endIndex) || isNearSymbolInAdjacentLine(lineIndex, lineOffSet + startIndex, lineOffSet + endIndex)) {
                 sumOfNumbers += Integer.parseInt(number);
             }
 
@@ -52,8 +52,8 @@ public class Day03 {
         return checkLeft(firstIndex, currentLine) || checkRight(lastIndex, currentLine);
     }
 
-    public boolean isNearSymbolInAdjacentLine(List<String> inputLines, int lineIndex, int firstIndex, int lastIndex) {
-        return isNearSymbolInUnderLine(lineIndex, firstIndex, lastIndex) || isNearSymbolInAboveLine(inputLines, lineIndex, lastIndex, lastIndex);
+    public boolean isNearSymbolInAdjacentLine(int lineIndex, int firstIndex, int lastIndex) {
+        return isNearSymbolInUnderLine(lineIndex, firstIndex, lastIndex) || isNearSymbolInAboveLine(lineIndex, lastIndex, lastIndex);
     }
 
     public List<String> findNumbers(String line) {
@@ -89,7 +89,7 @@ public class Day03 {
         return false;
     }
 
-    public boolean isNearSymbolInAboveLine(List<String> input, int lineIndex, int startIndex, int endIndex) {
+    public boolean isNearSymbolInAboveLine(int lineIndex, int startIndex, int endIndex) {
         if (lineIndex > 1) {
             String lineOver = input.get(lineIndex - 1).substring(Math.max(startIndex - 1, 0), Math.min(endIndex + 2, input.size()));
 

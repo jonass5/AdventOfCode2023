@@ -111,7 +111,7 @@ public class Day03Test {
         int endIndex = 3;
 
         //Act
-        boolean hasNearSymbol = day03.isNearSymbolInAdjacentLine(input, lineIndex, startIndex, endIndex);
+        boolean hasNearSymbol = day03.isNearSymbolInAdjacentLine(lineIndex, startIndex, endIndex);
 
         //Assert
         assertThat(hasNearSymbol).isTrue();
@@ -126,7 +126,7 @@ public class Day03Test {
         int endIndex = 9;
 
         //Act
-        boolean hasNearSymbol = day03.isNearSymbolInAdjacentLine(input, lineIndex, startIndex, endIndex);
+        boolean hasNearSymbol = day03.isNearSymbolInAdjacentLine(lineIndex, startIndex, endIndex);
 
         //Assert
         assertThat(hasNearSymbol).isFalse();
@@ -149,7 +149,7 @@ public class Day03Test {
         int endIndex = 2;
 
         // act
-        boolean result = day03.isNearSymbolInAboveLine(input, lineIndex, startIndex, endIndex);
+        boolean result = day03.isNearSymbolInAboveLine(lineIndex, startIndex, endIndex);
 
         // assert
         assertThat(result).isFalse();
@@ -163,7 +163,7 @@ public class Day03Test {
         int endIndex = 4;
 
         // act
-        boolean result = day03.isNearSymbolInAboveLine(input, lineIndex, startIndex, endIndex);
+        boolean result = day03.isNearSymbolInAboveLine(lineIndex, startIndex, endIndex);
 
         // assert
         assertThat(result).isTrue();
@@ -177,7 +177,7 @@ public class Day03Test {
         int endIndex = 2;
 
         // act
-        boolean result = day03.isNearSymbolInAboveLine(input, lineIndex, startIndex, endIndex);
+        boolean result = day03.isNearSymbolInAboveLine(lineIndex, startIndex, endIndex);
 
         // assert
         assertThat(result).isFalse();
@@ -191,7 +191,7 @@ public class Day03Test {
         int endIndex = 9;
 
         // act
-        boolean result = day03.isNearSymbolInAboveLine(input, lineIndex, startIndex, endIndex);
+        boolean result = day03.isNearSymbolInAboveLine(lineIndex, startIndex, endIndex);
 
         // assert
         assertThat(result).isFalse();
