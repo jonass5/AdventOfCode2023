@@ -5,7 +5,7 @@ import java.util.regex.Pattern;
 
 public class Day03 {
 
-    private List<String> input;
+    private final List<String> input;
 
     public Day03(List<String> input) {
         this.input = input;
@@ -53,7 +53,7 @@ public class Day03 {
     }
 
     public boolean isNearSymbolInAdjacentLine(List<String> inputLines, int lineIndex, int firstIndex, int lastIndex) {
-        return isNearSymbolInUnderLine(inputLines, lineIndex, firstIndex, lastIndex) || isNearSymbolInAboveLine(inputLines, lineIndex, lastIndex, lastIndex);
+        return isNearSymbolInUnderLine(lineIndex, firstIndex, lastIndex) || isNearSymbolInAboveLine(inputLines, lineIndex, lastIndex, lastIndex);
     }
 
 //    private boolean checkOverUnderLine(int currentLineNumber, int firstIndex, int lastIndex) {
@@ -129,7 +129,7 @@ public class Day03 {
         return false;
     }
 
-    public boolean isNearSymbolInUnderLine(List<String> input, int lineIndex, int startIndex, int endIndex) {
+    public boolean isNearSymbolInUnderLine(int lineIndex, int startIndex, int endIndex) {
         if (lineIndex < input.size() - 1) {
             String lineOver = input.get(lineIndex + 1).substring(Math.max(startIndex - 1, 0), Math.min(endIndex + 2, input.size()));
 

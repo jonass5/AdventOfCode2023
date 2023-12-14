@@ -205,7 +205,7 @@ public class Day03Test {
         int endIndex = 3;
 
         // act
-        boolean result = day03.isNearSymbolInUnderLine(input, lineIndex, startIndex, endIndex);
+        boolean result = day03.isNearSymbolInUnderLine(lineIndex, startIndex, endIndex);
 
         // assert
         assertThat(result).isFalse();
@@ -219,7 +219,7 @@ public class Day03Test {
         int endIndex = 9;
 
         // act
-        boolean result = day03.isNearSymbolInUnderLine(input, lineIndex, startIndex, endIndex);
+        boolean result = day03.isNearSymbolInUnderLine(lineIndex, startIndex, endIndex);
 
         // assert
         assertThat(result).isFalse();
@@ -233,7 +233,7 @@ public class Day03Test {
         int endIndex = 3;
 
         // act
-        boolean result = day03.isNearSymbolInUnderLine(input, lineIndex, startIndex, endIndex);
+        boolean result = day03.isNearSymbolInUnderLine(lineIndex, startIndex, endIndex);
 
         // assert
         assertThat(result).isFalse();
@@ -247,7 +247,7 @@ public class Day03Test {
         int endIndex = 8;
 
         // act
-        boolean result = day03.isNearSymbolInUnderLine(input, lineIndex, startIndex, endIndex);
+        boolean result = day03.isNearSymbolInUnderLine(lineIndex, startIndex, endIndex);
 
         // assert
         assertThat(result).isTrue();
