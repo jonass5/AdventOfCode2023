@@ -1,6 +1,5 @@
 import org.junit.jupiter.api.Test;
 
-import java.io.IOException;
 import java.util.Arrays;
 import java.util.List;
 
@@ -9,7 +8,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 public class Day03Test {
 
-    List<String> input = Arrays.asList(
+    private final List<String> input = Arrays.asList(
             "467..114..",
             "...*......",
             "..35..633.",
@@ -22,49 +21,51 @@ public class Day03Test {
             ".664.598.."
     );
 
+    private final Day03 day03 = new Day03(input);
+
     @Test
-    void isCharacterASymbol_True() throws IOException {
+    void isCharacterASymbol_True() {
 
         //Act
-        boolean isSymbol = new Day03().isCharacterASymbol('+');
+        boolean isSymbol = day03.isCharacterASymbol('+');
 
         //Assert
         assertThat(isSymbol).isTrue();
     }
 
     @Test
-    void isCharacterASymbol_False() throws IOException {
+    void isCharacterASymbol_False() {
 
         //Act
-        boolean isSymbol = new Day03().isCharacterASymbol('.');
+        boolean isSymbol = day03.isCharacterASymbol('.');
 
         //Assert
         assertThat(isSymbol).isFalse();
     }
 
     @Test
-    void isCharacterASymbol_False2() throws IOException {
+    void isCharacterASymbol_False2() {
 
         //Act
-        boolean isSymbol = new Day03().isCharacterASymbol('3');
+        boolean isSymbol = day03.isCharacterASymbol('3');
 
         //Assert
         assertThat(isSymbol).isFalse();
     }
 
     @Test
-    void isSymbolLeftToIndex() throws IOException {
+    void isSymbolLeftToIndex() {
         //Act
-        boolean result = new Day03().checkLeft(2, ".*35..633.");
+        boolean result = day03.checkLeft(2, ".*35..633.");
 
         //Assert
         assertThat(result).isTrue();
     }
 
     @Test
-    void isSymbolLeftToIndex_OutOfBounce() throws IOException {
+    void isSymbolLeftToIndex_OutOfBounce() {
         //Act
-        boolean result = new Day03().checkLeft(0, "35....633.");
+        boolean result = day03.checkLeft(0, "35....633.");
 
         //Assert
         assertThat(result).isFalse();
@@ -72,18 +73,18 @@ public class Day03Test {
 
 
     @Test
-    void isSymbolRightToIndex() throws IOException {
+    void isSymbolRightToIndex() {
         //Act
-        boolean result = new Day03().checkRight(8, "..35..633*");
+        boolean result = day03.checkRight(8, "..35..633*");
 
         //Assert
         assertThat(result).isTrue();
     }
 
     @Test
-    void isSymbolRightToIndex_OutOfBounce() throws IOException {
+    void isSymbolRightToIndex_OutOfBounce() {
         //Act
-        boolean result = new Day03().checkRight(8, "..35..633");
+        boolean result = day03.checkRight(8, "..35..633");
 
         //Assert
         assertThat(result).isFalse();
@@ -91,26 +92,26 @@ public class Day03Test {
 
 
     @Test
-    void shouldFindAllNumbersInStringLine() throws IOException {
+    void shouldFindAllNumbersInStringLine() {
         //Arrange
         String testLine = "........$..388.........152*141..*......73.719...$526....830...759......%......943............541.624.781...*...$150.............966.........";
 
         //Act
-        List<String> resultList = new Day03().findNumbers(testLine);
+        List<String> resultList = day03.findNumbers(testLine);
 
         //Assert
         assertThat(resultList).hasSize(14);
     }
 
     @Test
-    void shouldFindSymbolInAdjacentLineNearNumber_True() throws IOException {
+    void shouldFindSymbolInAdjacentLineNearNumber_True() {
         //Arrange
         int lineIndex = 0;
         int startIndex = 0;
         int endIndex = 3;
 
         //Act
-        boolean hasNearSymbol = new Day03().isNearSymbolInAdjacentLine(input, lineIndex, startIndex, endIndex);
+        boolean hasNearSymbol = day03.isNearSymbolInAdjacentLine(input, lineIndex, startIndex, endIndex);
 
         //Assert
         assertThat(hasNearSymbol).isTrue();
@@ -118,149 +119,149 @@ public class Day03Test {
 
 
     @Test
-    void shouldFindSymbolInAdjacentLineNearNumber_False() throws IOException {
+    void shouldFindSymbolInAdjacentLineNearNumber_False() {
         //Arrange
         int lineIndex = 7;
         int startIndex = 7;
         int endIndex = 9;
 
         //Act
-        boolean hasNearSymbol = new Day03().isNearSymbolInAdjacentLine(input, lineIndex, startIndex, endIndex);
+        boolean hasNearSymbol = day03.isNearSymbolInAdjacentLine(input, lineIndex, startIndex, endIndex);
 
         //Assert
         assertThat(hasNearSymbol).isFalse();
     }
 
     @Test
-    void shouldFindSymbolInSameLineNearNumber() throws IOException {
+    void shouldFindSymbolInSameLineNearNumber() {
         // act
-        boolean result = new Day03().isNearSymbolInSameLine("617*......", 0, 2);
+        boolean result = day03.isNearSymbolInSameLine("617*......", 0, 2);
 
         // assert
         assertThat(result).isTrue();
     }
 
     @Test
-    void shouldFindSymbolInAboveLineNearNumber_False_1() throws IOException {
+    void shouldFindSymbolInAboveLineNearNumber_False_1() {
         // arrange
         int lineIndex = 4;
         int startIndex = 0;
         int endIndex = 2;
 
         // act
-        boolean result = new Day03().isNearSymbolInAboveLine(input, lineIndex, startIndex, endIndex);
+        boolean result = day03.isNearSymbolInAboveLine(input, lineIndex, startIndex, endIndex);
 
         // assert
         assertThat(result).isFalse();
     }
 
     @Test
-    void shouldFindSymbolInAboveLineNearNumber_True() throws IOException {
+    void shouldFindSymbolInAboveLineNearNumber_True() {
         // arrange
         int lineIndex = 6;
         int startIndex = 2;
         int endIndex = 4;
 
         // act
-        boolean result = new Day03().isNearSymbolInAboveLine(input, lineIndex, startIndex, endIndex);
+        boolean result = day03.isNearSymbolInAboveLine(input, lineIndex, startIndex, endIndex);
 
         // assert
         assertThat(result).isTrue();
     }
 
     @Test
-    void shouldFindSymbolInAboveLineNearNumber_False_2() throws IOException {
+    void shouldFindSymbolInAboveLineNearNumber_False_2() {
         // arrange
         int lineIndex = 0;
         int startIndex = 0;
         int endIndex = 2;
 
         // act
-        boolean result = new Day03().isNearSymbolInAboveLine(input, lineIndex, startIndex, endIndex);
+        boolean result = day03.isNearSymbolInAboveLine(input, lineIndex, startIndex, endIndex);
 
         // assert
         assertThat(result).isFalse();
     }
 
     @Test
-    void shouldFindSymbolInAboveLineNearNumber_False_3() throws IOException {
+    void shouldFindSymbolInAboveLineNearNumber_False_3() {
         // arrange
         int lineIndex = 7;
         int startIndex = 7;
         int endIndex = 9;
 
         // act
-        boolean result = new Day03().isNearSymbolInAboveLine(input, lineIndex, startIndex, endIndex);
+        boolean result = day03.isNearSymbolInAboveLine(input, lineIndex, startIndex, endIndex);
 
         // assert
         assertThat(result).isFalse();
     }
 
     @Test
-    void shouldFindSymbolInUnderLineNearNumber_False_1() throws IOException {
+    void shouldFindSymbolInUnderLineNearNumber_False_1() {
         // arrange
         int lineIndex = 2;
         int startIndex = 2;
         int endIndex = 3;
 
         // act
-        boolean result = new Day03().isNearSymbolInUnderLine(input, lineIndex, startIndex, endIndex);
+        boolean result = day03.isNearSymbolInUnderLine(input, lineIndex, startIndex, endIndex);
 
         // assert
         assertThat(result).isFalse();
     }
 
     @Test
-    void shouldFindSymbolInUnderLineNearNumber_False_2() throws IOException {
+    void shouldFindSymbolInUnderLineNearNumber_False_2() {
         // arrange
         int lineIndex = 7;
         int startIndex = 7;
         int endIndex = 9;
 
         // act
-        boolean result = new Day03().isNearSymbolInUnderLine(input, lineIndex, startIndex, endIndex);
+        boolean result = day03.isNearSymbolInUnderLine(input, lineIndex, startIndex, endIndex);
 
         // assert
         assertThat(result).isFalse();
     }
 
     @Test
-    void shouldFindSymbolInUnderLineNearNumber_False_3() throws IOException {
+    void shouldFindSymbolInUnderLineNearNumber_False_3() {
         // arrange
         int lineIndex = 9;
         int startIndex = 1;
         int endIndex = 3;
 
         // act
-        boolean result = new Day03().isNearSymbolInUnderLine(input, lineIndex, startIndex, endIndex);
+        boolean result = day03.isNearSymbolInUnderLine(input, lineIndex, startIndex, endIndex);
 
         // assert
         assertThat(result).isFalse();
     }
 
     @Test
-    void shouldFindSymbolInUnderLineNearNumber_True() throws IOException {
+    void shouldFindSymbolInUnderLineNearNumber_True() {
         // arrange
         int lineIndex = 2;
         int startIndex = 6;
         int endIndex = 8;
 
         // act
-        boolean result = new Day03().isNearSymbolInUnderLine(input, lineIndex, startIndex, endIndex);
+        boolean result = day03.isNearSymbolInUnderLine(input, lineIndex, startIndex, endIndex);
 
         // assert
         assertThat(result).isTrue();
     }
 
     @Test
-    void shouldFindSymbolInUnderLineNearNumber_True2() throws IOException {
+    void shouldFindSymbolInUnderLineNearNumber_True2() {
         // arrange
         int lineIndex = 2;
         int startIndex = 6;
         int endIndex = 8;
 
         // act
-        new Day03().DayThree();
+        day03.DayThree();
 
         // assert
     }

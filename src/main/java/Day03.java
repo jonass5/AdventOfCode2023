@@ -1,5 +1,3 @@
-import java.io.IOException;
-import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.regex.Matcher;
@@ -9,8 +7,8 @@ public class Day03 {
 
     private List<String> input;
 
-    public Day03() throws IOException {
-        input = Utils.readFile(Paths.get("src/main/resources/DayThree.txt"));
+    public Day03(List<String> input) {
+        this.input = input;
     }
 
     public int DayThree() {
