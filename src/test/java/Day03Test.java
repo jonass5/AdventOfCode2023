@@ -262,8 +262,18 @@ public class Day03Test {
         List<PartNumber> partNumbers = day03.findAllPartNumbers();
 
         // assert
-        assertThat(partNumbers).hasSize(10);
-        assertThat(partNumbers).contains(new PartNumber(0), 0);
+        assertThat(partNumbers).containsExactly(
+                new PartNumber(0, 0, "467"),
+                new PartNumber(0, 5, "114"),
+                new PartNumber(2, 2, "35"),
+                new PartNumber(2, 6, "633"),
+                new PartNumber(4, 0, "617"),
+                new PartNumber(5, 7, "58"),
+                new PartNumber(6, 2, "592"),
+                new PartNumber(7, 6, "755"),
+                new PartNumber(9, 1, "664"),
+                new PartNumber(9, 5, "598")
+        );
     }
 
 }

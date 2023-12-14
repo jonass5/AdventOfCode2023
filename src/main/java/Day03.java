@@ -1,5 +1,6 @@
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -125,7 +126,9 @@ public class Day03 {
             List<String> numbersInLine = findNumbers(currentLine);
 
             for (int i = 0; i < numbersInLine.size(); i++) {
-                partNumbers.add(new PartNumber());
+                String number = numbersInLine.get(i);
+                int startIndex = currentLine.indexOf(number);
+                partNumbers.add(new PartNumber(inputLineCounter, startIndex, number));
             }
 
         }
@@ -135,4 +138,34 @@ public class Day03 {
 
 class PartNumber {
 
+    private final int lineIndex;
+    private final int startIndex;
+    private final String number;
+
+    public PartNumber(int lineIndex, int startIndex, String number) {
+        this.lineIndex = lineIndex;
+        this.startIndex = startIndex;
+
+        this.number = number;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        PartNumber that = (PartNumber) o;
+
+        if (lineIndex != that.lineIndex) return false;
+        if (startIndex != that.startIndex) return false;
+        return Objects.equals(number, that.number);
+    }
+
+    @Override
+    public int hashCode() {
+        int result = lineIndex;
+        result = 31 * result + startIndex;
+        result = 31 * result + (number != null ? number.hashCode() : 0);
+        return result;
+    }
 }
