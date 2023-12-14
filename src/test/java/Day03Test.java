@@ -276,4 +276,27 @@ public class Day03Test {
         );
     }
 
+    @Test
+    void shouldFilterOutAllPartNumbers() {
+        // arrange
+        List<PartNumber> partNumbers = Arrays.asList(
+                new PartNumber(0, 0, "467"),
+                new PartNumber(0, 5, "114"),
+                new PartNumber(2, 2, "35"),
+                new PartNumber(2, 6, "633"),
+                new PartNumber(4, 0, "617"),
+                new PartNumber(5, 7, "58"),
+                new PartNumber(6, 2, "592"),
+                new PartNumber(7, 6, "755"),
+                new PartNumber(9, 1, "664"),
+                new PartNumber(9, 5, "598"));
+
+        // act
+        List<PartNumber> filteredPartNumbers = day03.filterPartNumbers(partNumbers);
+
+        // assert
+        assertThat(filteredPartNumbers).hasSize(8);
+    }
+
+
 }

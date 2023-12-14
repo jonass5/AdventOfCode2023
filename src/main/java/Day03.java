@@ -134,6 +134,22 @@ public class Day03 {
         }
         return partNumbers;
     }
+
+    public List<PartNumber> filterPartNumbers(List<PartNumber> partNumbers) {
+
+        List<PartNumber> filteredPartNumberList = new ArrayList<>();
+
+        for (PartNumber partNumber : partNumbers) {
+            int endIndex = partNumber.getStartIndex() + (partNumber.getNumber().length() - 1);
+            String currentLine = input.get(partNumber.getLineIndex());
+            if (isNearSymbolInSameLine(currentLine, partNumber.getStartIndex(), endIndex)
+                    || isNearSymbolInAdjacentLine(partNumber.getLineIndex(), partNumber.getStartIndex(), endIndex)) {
+                filteredPartNumberList.add(partNumber);
+            }
+        }
+
+        return filteredPartNumberList;
+    }
 }
 
 class PartNumber {
@@ -147,6 +163,27 @@ class PartNumber {
         this.startIndex = startIndex;
 
         this.number = number;
+    }
+
+    public int getLineIndex() {
+        return lineIndex;
+    }
+
+    public int getStartIndex() {
+        return startIndex;
+    }
+
+    public String getNumber() {
+        return number;
+    }
+
+    @Override
+    public String toString() {
+        return "PartNumber{" +
+                "lineIndex=" + lineIndex +
+                ", startIndex=" + startIndex +
+                ", number='" + number + '\'' +
+                '}';
     }
 
     @Override
