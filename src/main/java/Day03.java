@@ -18,34 +18,35 @@ public class Day03 {
 
         for (int inputLineCounter = 0; inputLineCounter < input.size(); inputLineCounter++) {
             String currentLine = input.get(inputLineCounter);
-
             List<String> numbersInLine = findNumbers(currentLine);
 
-            sum += sumAllNumbersThatAreNearSymbol(inputLineCounter, currentLine, numbersInLine);
+            sum += sumAllNumbersThatAreNearSymbol(inputLineCounter, numbersInLine);
         }
+
+        System.out.println(sum);
 
         return sum;
     }
 
-    private int sumAllNumbersThatAreNearSymbol(int inputLineCounter, String currentLine, List<String> numbersInLine) {
-        int sum = 0;
-        for (String number : numbersInLine) {
+    public int sumAllNumbersThatAreNearSymbol(int lineIndex, List<String> numbersInLine) {
+        int sumOfNumbers = 0;
+        int lineOffSet = 0;
+        String currentLine = input.get(lineIndex);
 
-            System.out.println(currentLine);
+        for (String number : numbersInLine) {
 
             int startIndex = currentLine.indexOf(number);
             int endIndex = startIndex + number.length();
 
-            System.out.println(startIndex + ", " + endIndex);
-
-            if (isNearSymbolInSameLine(currentLine, startIndex, endIndex)) {
-                System.out.println(Integer.parseInt(number));
-                sum += Integer.parseInt(number);
+            if (isNearSymbolInSameLine(currentLine, startIndex, endIndex) || isNearSymbolInAdjacentLine(input, lineIndex, lineOffSet + startIndex, lineOffSet + endIndex)) {
+                sumOfNumbers += Integer.parseInt(number);
             }
 
             currentLine = currentLine.substring(endIndex);
+            lineOffSet = endIndex;
         }
-        return sum;
+
+        return sumOfNumbers;
     }
 
 

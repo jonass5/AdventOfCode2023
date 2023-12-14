@@ -251,4 +251,18 @@ public class Day03Test {
         // assert
         assertThat(result).isTrue();
     }
+
+    @Test
+    void shouldFindSymbolInUnderLineNearNumber_True2() throws IOException {
+        // arrange
+        int lineIndex = 2;
+        int startIndex = 6;
+        int endIndex = 8;
+
+        // act
+        new Day03().DayThree();
+
+        // assert
+    }
+
 }
