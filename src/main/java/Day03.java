@@ -53,38 +53,34 @@ public class Day03 {
         return checkLeft(firstIndex, currentLine) || checkRight(lastIndex, currentLine);
     }
 
-    private boolean checkOverUnderLine(int currentLineNumber, int firstIndex, int lastIndex) {
-
-        if (currentLineNumber > 0) {
-            String lineOver = input.get(currentLineNumber - 1).substring(maxOrValue(firstIndex - 1), maxOrValue(lastIndex + 1));
-
-            for (char c : lineOver.toCharArray()) {
-                if (!Character.isDigit(c) && !Character.toString(c).contains(".")) {
-                    return true;
-                }
-            }
-        }
-
-        if (currentLineNumber < input.size() - 1) {
-            String lineUnder = input.get(currentLineNumber + 1).substring(maxOrValue(firstIndex - 1), maxOrValue(lastIndex + 1));
-
-            for (char c : lineUnder.toCharArray()) {
-                if (!Character.isDigit(c) && !Character.toString(c).contains(".")) {
-                    return true;
-                }
-            }
-        }
-
-        return false;
+    public boolean isNearSymbolInAdjacentLine(int lineIndex, int firstIndex, int lastIndex) {
+        return isNearSymbolInUnderLine(input, lineIndex, firstIndex, lastIndex) || isNearSymbolInAboveLine(input, lineIndex, lastIndex, lastIndex);
     }
 
-    private int maxOrValue(int value) {
-        if (value > 139) {
-            return 139;
-        }
-
-        return Math.max(value, 0);
-    }
+//    private boolean checkOverUnderLine(int currentLineNumber, int firstIndex, int lastIndex) {
+//
+//        if (currentLineNumber > 0) {
+//            String lineOver = input.get(currentLineNumber - 1).substring(maxOrValue(firstIndex - 1), maxOrValue(lastIndex + 1));
+//
+//            for (char c : lineOver.toCharArray()) {
+//                if (!Character.isDigit(c) && !Character.toString(c).contains(".")) {
+//                    return true;
+//                }
+//            }
+//        }
+//
+//        if (currentLineNumber < input.size() - 1) {
+//            String lineUnder = input.get(currentLineNumber + 1).substring(maxOrValue(firstIndex - 1), maxOrValue(lastIndex + 1));
+//
+//            for (char c : lineUnder.toCharArray()) {
+//                if (!Character.isDigit(c) && !Character.toString(c).contains(".")) {
+//                    return true;
+//                }
+//            }
+//        }
+//
+//        return false;
+//    }
 
     public List<String> findNumbers(String line) {
         Pattern p = Pattern.compile("\\d+");
@@ -120,13 +116,29 @@ public class Day03 {
     }
 
     public boolean isNearSymbolInAboveLine(List<String> input, int lineIndex, int startIndex, int endIndex) {
-        String lineOver = input.get(lineIndex - 1).substring(startIndex - 1, endIndex + 2);
+        if (lineIndex > 1) {
+            String lineOver = input.get(lineIndex - 1).substring(Math.max(startIndex - 1, 0), Math.min(endIndex + 2, input.size()));
 
-        for (char currentChar : lineOver.toCharArray()) {
-            if (isCharacterASymbol(currentChar)) {
-                return true;
+            for (char currentChar : lineOver.toCharArray()) {
+                if (isCharacterASymbol(currentChar)) {
+                    return true;
+                }
+
             }
+        }
 
+        return false;
+    }
+
+    public boolean isNearSymbolInUnderLine(List<String> input, int lineIndex, int startIndex, int endIndex) {
+        if (lineIndex < input.size() - 1) {
+            String lineOver = input.get(lineIndex + 1).substring(Math.max(startIndex - 1, 0), Math.min(endIndex + 2, input.size()));
+
+            for (char currentChar : lineOver.toCharArray()) {
+                if (isCharacterASymbol(currentChar)) {
+                    return true;
+                }
+            }
         }
 
         return false;
