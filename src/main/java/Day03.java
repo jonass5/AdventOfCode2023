@@ -123,15 +123,13 @@ public class Day03 {
             String currentLine = input.get(inputLineCounter);
             List<String> numbersInLine = findNumbers(currentLine);
             List<PartNumber> linePartNumbers = new ArrayList<>();
+            int lineOffset = 0;
 
             for (int i = 0; i < numbersInLine.size(); i++) {
                 String number = numbersInLine.get(i);
-                int startIndex = currentLine.indexOf(number);
+                int startIndex = currentLine.substring(lineOffset).indexOf(number) + lineOffset;
                 linePartNumbers.add(new PartNumber(inputLineCounter, startIndex, number));
-            }
-
-            if (hasDuplicateNumbers(linePartNumbers)) {
-                System.out.println("DUPLICATE " + currentLine);
+                lineOffset = startIndex + number.length() - 1;
             }
 
             partNumbers.addAll(linePartNumbers);
