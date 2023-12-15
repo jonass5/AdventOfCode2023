@@ -1,5 +1,6 @@
 import org.junit.jupiter.api.Test;
 
+import java.io.IOException;
 import java.util.Arrays;
 import java.util.List;
 
@@ -312,5 +313,54 @@ public class Day03Test {
         assertThat(isNearSymbol).isTrue();
     }
 
+    @Test
+    void hasDuplicatePartNumbersInLine_True() {
+        //Arrange
+        List<PartNumber> partNumbers = Arrays.asList(
+                new PartNumber(0, 0, "467"),
+                new PartNumber(0, 5, "114"),
+                new PartNumber(0, 9, "35"),
+                new PartNumber(0, 13, "633"),
+                new PartNumber(0, 16, "617"),
+                new PartNumber(0, 19, "35"),
+                new PartNumber(0, 24, "592"),
+                new PartNumber(0, 31, "598"));
+
+        //Act
+        boolean hasDuplicateNumbers = day03.hasDuplicateNumbers(partNumbers);
+
+        //Assert
+        assertThat(hasDuplicateNumbers).isTrue();
+    }
+
+    @Test
+    void hasDuplicatePartNumbersInLine_False() {
+        //Arrange
+        List<PartNumber> partNumbers = Arrays.asList(
+                new PartNumber(0, 0, "467"),
+                new PartNumber(0, 5, "114"),
+                new PartNumber(0, 9, "35"),
+                new PartNumber(0, 13, "633"),
+                new PartNumber(0, 16, "617"),
+                new PartNumber(0, 19, "63"),
+                new PartNumber(0, 24, "592"),
+                new PartNumber(0, 31, "598"));
+
+        //Act
+        boolean hasDuplicateNumbers = day03.hasDuplicateNumbers(partNumbers);
+
+        //Assert
+        assertThat(hasDuplicateNumbers).isFalse();
+    }
+
+    @Test
+    void summerizeAllPartnerNumbers() throws IOException {
+
+        // act
+        int sum = day03.summerizeAllPartnerNumbers();
+
+        // assert
+        assertThat(sum).isEqualTo(4361);
+    }
 
 }

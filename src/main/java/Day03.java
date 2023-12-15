@@ -12,41 +12,39 @@ public class Day03 {
         this.input = input;
     }
 
-    public int dayThree() {
+    public int summerizeAllPartnerNumbers() {
         int sum = 0;
 
-        for (int inputLineCounter = 0; inputLineCounter < input.size(); inputLineCounter++) {
-            String currentLine = input.get(inputLineCounter);
-            List<String> numbersInLine = findNumbers(currentLine);
+        List<PartNumber> partNumberList = findAllPartNumbers();
+        List<PartNumber> filteredPartNumbers = filterPartNumbers(partNumberList);
 
-            sum += sumAllNumbersThatAreNearSymbolInLine(inputLineCounter, numbersInLine);
+        for (PartNumber partNumber : filteredPartNumbers) {
+            sum += Integer.parseInt(partNumber.getNumber());
         }
-
-        System.out.println(sum);
 
         return sum;
     }
 
-    public int sumAllNumbersThatAreNearSymbolInLine(int lineIndex, List<String> numbersInLine) {
-        int sumOfNumbers = 0;
-        int lineOffSet = 0;
-        String currentLine = input.get(lineIndex);
-
-        for (String number : numbersInLine) {
-
-            int startIndex = currentLine.indexOf(number);
-            int endIndex = startIndex + number.length();
-
-            if (isNearSymbolInSameLine(currentLine, startIndex, endIndex) || isNearSymbolInAdjacentLine(lineIndex, lineOffSet + startIndex, lineOffSet + endIndex)) {
-                sumOfNumbers += Integer.parseInt(number);
-            }
-
-            currentLine = currentLine.substring(endIndex);
-            lineOffSet = endIndex;
-        }
-
-        return sumOfNumbers;
-    }
+//    public int sumAllNumbersThatAreNearSymbolInLine(int lineIndex, List<String> numbersInLine) {
+//        int sumOfNumbers = 0;
+//        int lineOffSet = 0;
+//        String currentLine = input.get(lineIndex);
+//
+//        for (String number : numbersInLine) {
+//
+//            int startIndex = currentLine.indexOf(number);
+//            int endIndex = startIndex + number.length();
+//
+//            if (isNearSymbolInSameLine(currentLine, startIndex, endIndex) || isNearSymbolInAdjacentLine(lineIndex, lineOffSet + startIndex, lineOffSet + endIndex)) {
+//                sumOfNumbers += Integer.parseInt(number);
+//            }
+//
+//            currentLine = currentLine.substring(endIndex);
+//            lineOffSet = endIndex;
+//        }
+//
+//        return sumOfNumbers;
+//    }
 
 
     public boolean isNearSymbolInSameLine(String currentLine, int firstIndex, int lastIndex) {
@@ -124,15 +122,26 @@ public class Day03 {
         for (int inputLineCounter = 0; inputLineCounter < input.size(); inputLineCounter++) {
             String currentLine = input.get(inputLineCounter);
             List<String> numbersInLine = findNumbers(currentLine);
+            List<PartNumber> linePartNumbers = new ArrayList<>();
 
             for (int i = 0; i < numbersInLine.size(); i++) {
                 String number = numbersInLine.get(i);
                 int startIndex = currentLine.indexOf(number);
-                partNumbers.add(new PartNumber(inputLineCounter, startIndex, number));
+                linePartNumbers.add(new PartNumber(inputLineCounter, startIndex, number));
             }
+
+            if (hasDuplicateNumbers(linePartNumbers)) {
+                System.out.println("DUPLICATE " + currentLine);
+            }
+
+            partNumbers.addAll(linePartNumbers);
 
         }
         return partNumbers;
+    }
+
+    public boolean hasDuplicateNumbers(List<PartNumber> partNumberList) {
+        return partNumberList.stream().map(PartNumber::getNumber).distinct().count() != partNumberList.size();
     }
 
     public List<PartNumber> filterPartNumbers(List<PartNumber> partNumbers) {
